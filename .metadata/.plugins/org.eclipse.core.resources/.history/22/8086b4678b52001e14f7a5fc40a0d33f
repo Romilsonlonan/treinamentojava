@@ -1,0 +1,57 @@
+package application; // Define o pacote (ou namespace) em que a classe está localizada.
+
+import java.util.Locale; // Importa a classe Locale do pacote java.util.
+import java.util.Scanner; // Importa a classe Scanner do pacote java.util.
+
+import entities.Triangle;
+
+public class Program { // Define uma classe chamada Program.
+
+    public static void main(String[] args) { // Define o método main, ponto de entrada do programa.
+
+        Locale.setDefault(Locale.US); // Define o Locale para US, usando ponto como separador decimal.
+        Scanner sc = new Scanner(System.in); // Cria um objeto Scanner para leitura de entrada.
+
+        // Declaração de variáveis para as coordenadas dos triângulos X e Y.
+        //double xA, xB, xC, yA, yB, yC; após criarmos entities com uma nova classe devemos apagar
+        //utilizando objetos da classe Triangle para representar os triângulos X e Y, o que pode sugerir 
+        //que houve uma criação de uma classe chamada Triangle em algum momento anterior no código ou em 
+        // um arquivo separado. Essa abordagem é interessante porque permite encapsular as características 
+        // e comportamentos dos triângulos em uma classe dedicada, facilitando a organização e manutenção do código.
+        Triangle x, y; 
+        
+        //Para que possamos usar o objeto devemos instanciar(criar) o objeto para que ele exita
+        x = new Triangle();
+        y = new Triangle();
+        
+        System.out.println("Enter the measures of triangle X: "); // Solicita as medidas do triângulo X.
+        xA = sc.nextDouble(); // Lê a coordenada xA do triângulo X.
+        xB = sc.nextDouble(); // Lê a coordenada xB do triângulo X.
+        xC = sc.nextDouble(); // Lê a coordenada xC do triângulo X.
+
+        System.out.println("Enter the measures of triangle Y: "); // Solicita as medidas do triângulo Y.
+        yA = sc.nextDouble(); // Lê a coordenada yA do triângulo Y.
+        yB = sc.nextDouble(); // Lê a coordenada yB do triângulo Y.
+        yC = sc.nextDouble(); // Lê a coordenada yC do triângulo Y.
+
+        // Cálculo da área do triângulo X usando a fórmula de Herão.
+        double p = (xA + xB + xC) / 2.0;
+        double areaX = Math.sqrt(p * (p - xA) * (p - xB) * (p - xC));
+
+        // Cálculo da área do triângulo Y usando a fórmula de Herão.
+        p = (yA + yB + yC) / 2.0;
+        double areaY = Math.sqrt(p * (p - yA) * (p - yB) * (p - yC));
+
+        System.out.printf("Triangle X area: %.4f%n", areaX); // Imprime a área do triângulo X.
+        System.out.printf("Triangle Y area: %.4f%n", areaY); // Imprime a área do triângulo Y.
+
+        // Compara as áreas e imprime qual triângulo tem a área maior.
+        if (areaX > areaY) {
+            System.out.println("Larger area: X");
+        } else {
+            System.out.println("Larger area: Y");
+        }
+
+        sc.close(); // Fecha o Scanner.
+    }
+}	
